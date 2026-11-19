@@ -134,6 +134,10 @@ async def part4_attacks():
 
 
 async def main(parts=None):
+    # Lab output includes Vietnamese text; Windows consoles may default to cp1258.
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
     setup_api_key()
 
     if parts is None:

@@ -18,6 +18,7 @@ from core.config import (
     get_blue_provider,
     blue_client_kwargs,
     red_openai_client_kwargs,
+    get_red_api_model,
 )
 
 
@@ -42,6 +43,7 @@ class OpenAIRunner:
     plugins: list = field(default_factory=list)
     provider: str = "openai"
     temperature: float = 0.4
+    user_id: str = "student"
     client_kwargs: dict = field(default_factory=dict)
     input_hooks: list[Callable[[str], str | None]] = field(default_factory=list)
     output_hooks: list[Callable[[str], str]] = field(default_factory=list)
@@ -90,7 +92,7 @@ class OpenAIRunner:
             role="user",
             parts=[types.Part.from_text(text=user_message)],
         )
-        ctx = _MockInvocationContext()
+        ctx = _MockInvocationContext(user_id=self.user_id)
         for plugin in self.plugins:
             cb = getattr(plugin, "on_user_message_callback", None)
             if cb is None:
@@ -222,7 +224,7 @@ def create_openai_pair(
         name=name,
         instruction=instruction,
         app_name=app_name,
-        model=model or get_red_model(),
+        model=get_red_api_model() if model is None or get_red_provider() == "openrouter" else model,
         provider=get_red_provider(),
         client_kwargs=red_openai_client_kwargs(),
         plugins=plugins,

@@ -9,8 +9,8 @@
 
 - **Cá nhân:** mỗi học viên tự fork/clone starter, đổi tên repo theo quy ước Khóa 4, tự nộp **link repo cá nhân** lên LMS / CodeLabs.
 - Dù lớp có thảo luận chung, **không** nộp chung một repo cho nhiều MSSV.
-- Tên repo: `K4-L3-DAY11-<HoVaTen>-<MSSV>-Guardrails-HITL-Responsible-AI`  
-  Ví dụ: `K4-L3-DAY11-NguyenVanA-2A2026xxxxx-Guardrails-HITL-Responsible-AI`
+- Tên repo: `K5-<L3A hoặc L3B>-DAY11-<HoVaTen>-<MSSV>-Guardrails-HITL-Responsible-AI`
+  Ví dụ: `K5-L3A-DAY11-NguyenVanA-2A2026xxxxx-Guardrails-HITL-Responsible-AI`
 
 Chi tiết: [`SUBMISSION.md`](SUBMISSION.md).
 
@@ -18,7 +18,7 @@ Chi tiết: [`SUBMISSION.md`](SUBMISSION.md).
 
 ## 2. Deadline
 
-- **Mặc định:** **23h59 cùng ngày làm Lab** (ICT / GMT+7).
+- **Hạn mặc định:** ca sáng **23h59 cùng ngày**; ca chiều **11h59 trưa ngày hôm sau** (ICT / GMT+7), theo [`SUBMISSION.md`](SUBMISSION.md).
 - Nếu Key Coach thông báo gia hạn **trong vòng 48 giờ sau Lab**, hạn mới theo thông báo đó.
 - Sau hạn (hoặc hết gia hạn): nộp muộn bị **trừ điểm** theo quy định khóa; commit sửa sau hạn có thể không được tính.
 

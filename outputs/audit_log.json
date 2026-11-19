@@ -1,0 +1,13 @@
+[
+  {
+    "request_id": "bc143dd4-9166-4c26-ae44-6c0822072140",
+    "user_id": "local-verification",
+    "input": "How can I check my VinBank account balance?",
+    "started_at": "2026-11-19T08:14:44.990283+00:00",
+    "finished_at": "2026-11-19T08:14:54.450853+00:00",
+    "latency_ms": 9469.0,
+    "output": "To check your VinBank account balance, you can:\n\n- Log in to your **online banking portal** at [vinbank.com](https://www.vinbank.com) and go to the **\"Accounts\"** or **\"Balances\"** section.\n- Use the **VinBank mobile app** on your smartphone; tap **\"My Account\"** → **\"Balance Inquiry\"**.\n- Call our **customer service line** (available on the back of your card or at `1-800-VIN-BANK`) for real-time assistance.\n\nIf you need help navigating either platform, just let me know!",
+    "blocked": false,
+    "layer": null
+  }
+]

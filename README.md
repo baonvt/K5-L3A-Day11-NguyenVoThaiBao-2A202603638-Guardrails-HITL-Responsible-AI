@@ -14,7 +14,13 @@
 | Lab làm bài (Checkpoint 2 → 5) | ≈ **130'** |
 | **Tổng** | ≈ **160'** |
 
-**Hạn nộp:** **23h59 cùng ngày làm Lab** (ICT / GMT+7). Gia hạn chỉ khi Key Coach thông báo trong 48 giờ sau Lab — xem [`RULES.md`](RULES.md).
+**Hạn nộp:** ca sáng **23h59 cùng ngày**; ca chiều **11h59 trưa ngày hôm sau** (ICT / GMT+7). Gia hạn chỉ khi Key Coach thông báo trong 48 giờ sau Lab — xem [`RULES.md`](RULES.md) và [`SUBMISSION.md`](SUBMISSION.md).
+
+## Thông tin bài nộp
+
+- **Họ tên:** Nguyen Vo Thai Bao
+- **MSSV:** 2A202603638
+- **Tên repo cần dùng khi nộp:** `K5-L3A-DAY11-NguyenVoThaiBao-2A202603638-Guardrails-HITL-Responsible-AI`
 
 ---
 
@@ -75,8 +81,8 @@ Bonus lab chỉ tính **một** trong hai: leak **Red** (B1, tối đa +5) hoặ
 
 Codelab lớp: xem `template-codelabs/codelab-day11-k4-l3a.md` (L3A) hoặc bản L3B tương ứng.
 
-**Repo nộp học viên:** `K4-<L3A hoặc L3B>-DAY11-<HoVaTen>-<MSSV>-Guardrails-HITL-Responsible-AI`  
-Ví dụ: `K4-L3A-DAY11-NguyenVanA-2A2026xxxxx-Guardrails-HITL-Responsible-AI`
+**Repo nộp học viên:** `K5-<L3A hoặc L3B>-DAY11-<HoVaTen>-<MSSV>-Guardrails-HITL-Responsible-AI`
+Ví dụ: `K5-L3A-DAY11-NguyenVanA-2A2026xxxxx-Guardrails-HITL-Responsible-AI`
 
 ---
 
@@ -158,7 +164,31 @@ cp .env.example .env
 pip install -r requirements.txt
 ```
 
-Điền `.env`: `OPENROUTER_API_KEY` + `RED_TEAM_PROVIDER=openai|gemini` (và key tương ứng).  
+Điền `.env` theo provider muốn dùng. Cấu hình chạy hiện tại dùng:
+
+```dotenv
+BLUE_PROVIDER=liquid
+LIQUID_API_KEY=<Liquid AI key>
+RED_TEAM_PROVIDER=openrouter
+OPENROUTER_API_KEY=<OpenRouter key>
+OPENAI_MODEL=gpt-4o-mini
+```
+
+Không ghi key thật vào `.env.example`, README hay commit.
 Rồi mở [`CHECKPOINTS.md`](CHECKPOINTS.md) và làm lần lượt Checkpoint 1 → 5.
 
 Nộp theo [`SUBMISSION.md`](SUBMISSION.md) · Quy định: [`RULES.md`](RULES.md).
+
+### Chạy API local
+
+Repo gốc chạy lab bằng CLI; để phục vụ chatbot qua HTTP, dùng service Blue:
+
+```powershell
+$env:BLUE_PROVIDER = "liquid"
+$env:LIQUID_API_KEY = "<Liquid AI key>"
+python -m uvicorn server:app --app-dir src --host 127.0.0.1 --port 8000
+```
+
+Gửi `POST http://127.0.0.1:8000/chat` với JSON `{"message":"How do I check my account balance?","user_id":"local-user"}`; kiểm tra `GET /health` hoặc `/docs`. Giữ key trong biến môi trường hoặc `.env` local và không commit key.
+
+> Cấu hình lab chuẩn trong README là Blue qua OpenRouter và Red qua OpenAI/Gemini. Theo chỉ định API của bài chạy này, Blue gọi Liquid AI trực tiếp (`lfm3-1.7b`) và Red gọi `gpt-4o-mini` qua OpenRouter; đây là provider override, còn guardrail, artifact và model Red vẫn theo checkpoint.
